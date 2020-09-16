@@ -17,6 +17,10 @@ const Header = () => {
     const handleSubmit = (e) =>{
         e.preventDefault();
         dispatch(createNewPost(newPost));
+        setNewPost({
+            title:'',
+            body:''
+        });
     }
     return(
         <header className="py-5">
@@ -37,14 +41,17 @@ const Header = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="title">Titulo</label>
-                            <input onChange={handleChange} type="text" className="form-control" value={newPost.title} name="title" id="title" aria-describedby="emailHelp"/>
+                            <input placeholder="Post nuevo" onChange={handleChange} type="text" className="form-control" value={newPost.title} name="title" id="title" aria-describedby="emailHelp"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="body">Texto</label>
-                            <textarea className="form-control" onChange={handleChange} name='body' value={newPost.body} id="body" rows="3"></textarea>
+                            <textarea placeholder="Texto Nuevo" className="form-control" onChange={handleChange} name='body' value={newPost.body} id="body" rows="3"></textarea>
                         </div>
-                        <button type="submit" className="btn btn-primary">Guardar Nuevo</button>
-                        
+                        <button type="submit" className="btn btn-primary" data-target="#collapseForm" 
+                            aria-expanded="true" aria-controls="collapseForm" data-toggle="collapse"
+                        >
+                            Guardar Nuevo
+                        </button>
                     </form>
                 </div>
             </div>
